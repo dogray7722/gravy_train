@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Playfair_Display, Lora } from "next/font/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair"
 });
 
-const dmSans = DM_Sans({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-dm-sans"
+  variable: "--font-lora"
 });
 
 export default function LandingInk() {
@@ -25,7 +25,7 @@ export default function LandingInk() {
 
   return (
     <div
-      className={`${playfair.variable} ${dmSans.variable} relative min-h-screen flex flex-col items-center justify-center p-8 overflow-hidden bg-[#2c2620] text-[#f0e8d5] [font-family:var(--font-dm-sans)]`}
+      className={`${playfair.variable} ${lora.variable} relative min-h-screen flex flex-col items-center justify-center p-8 overflow-hidden bg-[#2c2620] text-[#f0e8d5] [font-family:var(--font-lora)]`}
       style={{
         backgroundImage: `
           radial-gradient(ellipse 80% 50% at 20% 80%, rgba(180,140,90,0.14) 0%, transparent 60%),
@@ -58,16 +58,17 @@ export default function LandingInk() {
       </span>
 
       <h1 className="[font-family:var(--font-playfair)] text-[clamp(3rem,8vw,6.5rem)] font-bold leading-[1.05] text-center text-[#f0e8d5] m-0 animate-[fadeUp_0.9s_ease_0.1s_both]">
-        Words
+        All Aboard
         <br />
-        in <em className="not-italic text-[#c9a96e]">Ink</em>
+        the <em className="not-italic text-[#c9a96e]">Gravy Train</em>
       </h1>
 
       <div className="w-20 h-px bg-linear-to-r from-transparent via-[#b48c50] to-transparent my-7 mx-auto" />
 
       <p className="text-base italic text-[#c4b89a] text-center max-w-100 leading-[1.8] m-0 animate-[fadeUp_1s_ease_0.2s_both]">
-        Taking back the imprints of my life from the cess pool that is social
-        media. What I create here, I own.
+        Taking back my life echoes from the cess pool that is social media. What
+        I create here is from my own mind and my own experience. Everything I
+        build here, I own.
       </p>
 
       <div className="w-20 h-px bg-linear-to-r from-transparent via-[#b48c50] to-transparent my-7 mx-auto" />
@@ -83,7 +84,7 @@ export default function LandingInk() {
             onSubmit={handleSubscribe}
           >
             <input
-              className="flex-1 py-[0.85rem] px-4 bg-transparent border-0 outline-none text-[#e8dfc8] [font-family:var(--font-dm-sans)] text-[0.9rem] placeholder:text-[#8a7e6e]"
+              className="flex-1 py-[0.85rem] px-4 bg-transparent border-0 outline-none text-[#e8dfc8] [font-family:var(--font-lora)] text-[0.9rem] placeholder:text-[#8a7e6e]"
               type="email"
               placeholder="your@email.com"
               value={email}
@@ -91,7 +92,7 @@ export default function LandingInk() {
               required
             />
             <button
-              className="py-[0.85rem] px-[1.4rem] bg-[#c9a96e] border-0 text-[#1a1410] [font-family:var(--font-dm-sans)] text-[0.8rem] font-bold tracking-widest uppercase cursor-pointer transition-colors duration-200 whitespace-nowrap hover:bg-[#dbbe86]"
+              className="py-[0.85rem] px-[1.4rem] bg-[#c9a96e] border-0 text-[#1a1410] [font-family:var(--font-lora)] text-[0.8rem] font-bold tracking-widest uppercase cursor-pointer transition-colors duration-200 whitespace-nowrap hover:bg-[#dbbe86]"
               type="submit"
             >
               Subscribe
@@ -101,7 +102,7 @@ export default function LandingInk() {
 
         <Link
           href="/blog"
-          className="inline-flex items-center justify-center gap-2 py-3 px-8 border border-[rgba(180,140,80,0.5)] text-[#c9a96e] text-[0.82rem] tracking-[0.18em] uppercase no-underline italic [font-family:var(--font-dm-sans)] bg-[rgba(180,140,80,0.06)] w-full transition-colors duration-200 hover:border-[#c9a96e] hover:text-[#e8d5a8] hover:bg-[rgba(180,140,80,0.12)]"
+          className="inline-flex items-center justify-center gap-2 py-3 px-8 border border-[rgba(180,140,80,0.5)] text-[#c9a96e] text-[0.82rem] tracking-[0.18em] uppercase no-underline italic [font-family:var(--font-lora)] bg-[rgba(180,140,80,0.06)] w-full transition-colors duration-200 hover:border-[#c9a96e] hover:text-[#e8d5a8] hover:bg-[rgba(180,140,80,0.12)]"
         >
           ✦ Read the Blog
         </Link>
