@@ -3,12 +3,27 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Total sticky header height (top row 4.375rem + nav row 2.75rem) */
+  --header-height: 7.125rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
+
+  /* Blog theme — warm dark ink palette */
+  --color-ink-bg:       #2c2620;
+  --color-ink-surface:  #332c26;
+  --color-ink-dark:     #140f0a;
+  --color-ink-text:     #f0e8d5;
+  --color-ink-warm:     #c4b89a;
+  --color-ink-muted:    #bfae90; /* lightened from #a09070 — min 5:1 on ink-bg */
+  --color-ink-subtle:   #a08a68; /* lightened from #7a6a50 — use for UI text only */
+  /* ink-faint: decorative borders/gradients only — do not use for text */
+  --color-ink-faint:    #8a7860; /* lightened from #6a5e4e */
+  --color-ink-gold:     #c9a96e;
+  --color-ink-gold-dim: #c09a5e; /* lightened from #b48c50 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +40,14 @@ body {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(1.25rem); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

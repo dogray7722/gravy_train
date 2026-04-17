@@ -47,3 +47,7 @@ Global styles are in `app/globals.css`. Static assets go in `public/`.
 ## ESLint
 
 Config is in `eslint.config.mjs` using the flat config format. It extends `eslint-config-next/core-web-vitals` and `eslint-config-next/typescript`. Run with `npm run lint` (no directory argument needed — Next.js CLI handles it).
+
+## General Practices
+
+- **Use `rem` for all sizing, never `px` in bracket notation** — convert any pixel value to rem (divide by 16). Use Tailwind's named scale where possible (e.g. `h-11` not `h-[44px]`). Pixel values in inline `style` props for colors/gradients are the only exception.
