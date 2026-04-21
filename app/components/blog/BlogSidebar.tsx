@@ -1,6 +1,6 @@
 "use client";
 
-import type { CategoryFilter, ArchiveYear, ActiveArchive } from "@/lib/types";
+import type { CategoryFilter, ArchiveYear, ActiveArchive, SortOrder } from "@/lib/types";
 
 const TAGS = [
   "#wandering",
@@ -20,9 +20,11 @@ interface Props {
   activeCategory: CategoryFilter;
   activeArchive: ActiveArchive | null;
   search: string;
+  sortOrder: SortOrder;
   onCategoryChange: (cat: CategoryFilter) => void;
   onSearchChange: (val: string) => void;
   onArchiveChange: (archive: ActiveArchive | null) => void;
+  onSortChange: (sort: SortOrder) => void;
 }
 
 export default function BlogSidebar({
@@ -32,9 +34,11 @@ export default function BlogSidebar({
   activeCategory,
   activeArchive,
   search,
+  sortOrder,
   onCategoryChange,
   onSearchChange,
-  onArchiveChange
+  onArchiveChange,
+  onSortChange
 }: Props) {
   return (
     <aside
@@ -85,6 +89,28 @@ export default function BlogSidebar({
                 }`}
               >
                 {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Sort */}
+        <div className="mb-10">
+          <p className="text-[0.75rem] tracking-[0.22em] uppercase text-ink-warm italic mb-4 pb-2 border-b border-[rgba(180,140,80,0.15)]">
+            Sort By
+          </p>
+          <div className="flex flex-wrap gap-[0.4rem]">
+            {(["newest", "oldest"] as SortOrder[]).map((option) => (
+              <button
+                key={option}
+                onClick={() => onSortChange(option)}
+                className={`px-[0.8rem] py-[0.3rem] border text-[0.75rem] italic [font-family:var(--font-lora)] cursor-pointer transition-all capitalize ${
+                  sortOrder === option
+                    ? "border-ink-warm text-ink-text bg-[rgba(255,255,255,0.06)]"
+                    : "border-[rgba(180,140,80,0.25)] text-ink-warm hover:border-ink-warm hover:text-ink-text hover:bg-[rgba(255,255,255,0.06)]"
+                }`}
+              >
+                {option}
               </button>
             ))}
           </div>

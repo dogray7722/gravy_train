@@ -1,5 +1,7 @@
 export type PostType = "text" | "image" | "video";
 
+export type SortOrder = "newest" | "oldest";
+
 export type Category = "video" | "travel" | "thoughts" | "random";
 
 export type CategoryFilter = "all" | Category;
