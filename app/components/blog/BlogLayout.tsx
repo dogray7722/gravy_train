@@ -1,14 +1,25 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import type { Post, CategoryFilter, ActiveArchive } from "@/lib/types";
+import type {
+  Post,
+  CategoryFilter,
+  ActiveArchive,
+  SortOrder
+} from "@/lib/types";
 import { computeArchive } from "@/lib/posts";
 import BlogHeader from "./BlogHeader";
 import BlogHero from "./BlogHero";
 import BlogPostGrid from "./BlogPostGrid";
 import BlogSidebar from "./BlogSidebar";
 
-const CATEGORIES: CategoryFilter[] = ["all", "video", "travel", "thoughts", "random"];
+const CATEGORIES: CategoryFilter[] = [
+  "all",
+  "video",
+  "travel",
+  "thoughts",
+  "random"
+];
 
 interface Props {
   posts: Post[];
@@ -18,7 +29,10 @@ export default function BlogLayout({ posts }: Props) {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [search, setSearch] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeArchive, setActiveArchive] = useState<ActiveArchive | null>(null);
+  const [activeArchive, setActiveArchive] = useState<ActiveArchive | null>(
+    null
+  );
+  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
 
   const archiveYears = useMemo(() => computeArchive(posts), [posts]);
 
@@ -38,12 +52,21 @@ export default function BlogLayout({ posts }: Props) {
         if (!activeArchive) return true;
         const d = new Date(p.date);
         if (d.getFullYear() !== activeArchive.year) return false;
-        if (activeArchive.month !== null && d.getMonth() + 1 !== activeArchive.month) return false;
+        if (
+          activeArchive.month !== null &&
+          d.getMonth() + 1 !== activeArchive.month
+        )
+          return false;
         return true;
+      })
+      .sort((a, b) => {
+        const diff = new Date(b.date).getTime() - new Date(a.date).getTime();
+        return sortOrder === "newest" ? diff : -diff;
       });
-  }, [posts, activeCategory, search, activeArchive]);
+  }, [posts, activeCategory, search, activeArchive, sortOrder]);
 
-  const showFeatured = activeCategory === "all" && search === "" && activeArchive === null;
+  const showFeatured =
+    activeCategory === "all" && search === "" && activeArchive === null;
 
   const gridLabel = (() => {
     if (activeArchive) {
@@ -59,7 +82,7 @@ export default function BlogLayout({ posts }: Props) {
       return activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1);
     }
     if (search !== "") return `Results for "${search}"`;
-    return "Latest Posts";
+    return "Posts";
   })();
 
   return (
@@ -69,7 +92,7 @@ export default function BlogLayout({ posts }: Props) {
         backgroundImage: `
           radial-gradient(ellipse 70% 40% at 10% 90%, rgba(180,140,90,0.09) 0%, transparent 55%),
           radial-gradient(ellipse 50% 35% at 90% 10%, rgba(200,160,100,0.06) 0%, transparent 50%)
-        `,
+        `
       }}
     >
       <BlogHeader
@@ -80,7 +103,10 @@ export default function BlogLayout({ posts }: Props) {
         onArchiveChange={setActiveArchive}
       />
 
-      <div id="main-content" className="flex max-w-screen-xl mx-auto px-8 items-start">
+      <div
+        id="main-content"
+        className="flex max-w-screen-xl mx-auto px-8 items-start"
+      >
         {/* Main content */}
         <div className="flex-1 min-w-0 border-r border-[rgba(180,140,80,0.12)] pr-10">
           {showFeatured && hero && <BlogHero post={hero} />}
@@ -95,9 +121,11 @@ export default function BlogLayout({ posts }: Props) {
           activeCategory={activeCategory}
           activeArchive={activeArchive}
           search={search}
+          sortOrder={sortOrder}
           onCategoryChange={setActiveCategory}
           onSearchChange={setSearch}
           onArchiveChange={setActiveArchive}
+          onSortChange={setSortOrder}
         />
       </div>
 

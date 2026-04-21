@@ -15,7 +15,7 @@ export default function BlogHeader({
   onToggleSidebar,
   archiveYears,
   activeArchive,
-  onArchiveChange,
+  onArchiveChange
 }: Props) {
   return (
     <header className="bg-[rgba(20,15,10,0.95)] backdrop-blur-md border-b border-[rgba(180,140,80,0.18)] px-8 sm:px-12 sticky top-0 z-50">
@@ -30,7 +30,7 @@ export default function BlogHeader({
 
         <div className="flex items-center gap-6">
           <span className="hidden sm:inline text-[0.75rem] tracking-[0.14em] uppercase text-ink-warm italic">
-            Est. 2025 · David Gray
+            Est. 2026 · David Gray
           </span>
           <Link
             href="/#subscribe"
