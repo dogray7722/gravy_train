@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Post } from "@/lib/types";
 import { formatDate } from "@/lib/posts";
+import ThemeToggle from "./ThemeToggle";
 
 interface Props {
   post: Post;
@@ -29,7 +30,7 @@ export default function PostDetail({ post, content }: Props) {
       </h1>
 
       {/* Meta */}
-      <p className="text-[0.75rem] text-ink-muted tracking-[0.06em] mb-8 pb-8 border-b border-[rgba(180,140,80,0.15)]">
+      <p className="text-[0.75rem] text-ink-muted tracking-[0.06em] mb-8 pb-8 border-b border-(--ink-border-mid)">
         {formatDate(post.date)} · {post.readTime}
       </p>
 
@@ -38,7 +39,7 @@ export default function PostDetail({ post, content }: Props) {
         <img
           src={post.imageSrc}
           alt=""
-          className="w-full mb-10 border border-[rgba(180,140,80,0.12)]"
+          className="w-full mb-10 border border-(--ink-border-soft)"
         />
       )}
       {post.type === "video" && post.videoId && (

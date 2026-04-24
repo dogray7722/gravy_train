@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, Playfair_Display, Lora } from "next/font/google";
+import { ThemeProvider } from "@/app/context/ThemeContext";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -32,13 +34,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        {/* Runs before hydration; sets data-theme from localStorage to prevent FOUC. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();`}
+        </Script>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-ink-gold focus:text-ink-dark focus:text-sm"
         >
           Skip to main content
         </a>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

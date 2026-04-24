@@ -62,7 +62,7 @@ export default function ArchiveDropdown({ archiveYears, activeArchive, onArchive
 
       {/* Dropdown panel */}
       {open && (
-        <div className="absolute top-full left-0 mt-1 bg-[rgba(20,15,10,0.97)] border border-[rgba(180,140,80,0.18)] min-w-[10rem] z-50 py-2 backdrop-blur-md">
+        <div className="absolute top-full left-0 mt-1 bg-(--ink-overlay-dropdown) border border-(--ink-border-strong) min-w-[10rem] z-50 py-2 backdrop-blur-md">
           {/* Clear filter */}
           {isActive && (
             <button

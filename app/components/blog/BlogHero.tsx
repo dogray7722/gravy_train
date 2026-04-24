@@ -6,16 +6,16 @@ export default function BlogHero({ post }: { post: Post }) {
   return (
     <section className="py-10 mb-0">
       {/* Section label with decorative line */}
-      <p className="flex items-center gap-3 text-[0.75rem] tracking-[0.25em] uppercase text-ink-warm italic mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-[rgba(180,140,80,0.4)] after:to-transparent">
+      <p className="flex items-center gap-3 text-[0.75rem] tracking-[0.25em] uppercase text-ink-warm italic mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-(--ink-decor-line-strong) after:to-transparent">
         Featured
       </p>
 
-      <div className="border border-[rgba(180,140,80,0.15)] p-10 bg-[rgba(255,255,255,0.02)] animate-[fadeUp_0.6s_ease_both]">
+      <div className="border border-(--ink-border-mid) p-10 bg-(--ink-surface-hero) animate-[fadeUp_0.6s_ease_both]">
         {post.imageSrc && (
           <img
             src={post.imageSrc}
             alt=""
-            className="w-full h-[17.5rem] object-cover mb-6 border border-[rgba(180,140,80,0.12)]"
+            className="w-full h-[17.5rem] object-cover mb-6 border border-(--ink-border-soft)"
           />
         )}
 
