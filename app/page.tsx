@@ -42,9 +42,9 @@ export default function LandingInk() {
       <div className="w-20 h-px bg-linear-to-r from-transparent via-ink-gold-dim to-transparent my-7 mx-auto" />
 
       <p className="text-base italic text-ink-warm text-center max-w-100 leading-[1.8] m-0 animate-[fadeUp_1s_ease_0.2s_both]">
-        Taking back my life echoes from the cess pool that is social media. What
-        I create here is from my own mind and my own experience. Everything I
-        build here, I own.
+        Taking back my life history from the cess pool that is social media.
+        What I create here is from my own mind and my own experience. Everything
+        I build here, I own.
       </p>
 
       <div className="w-20 h-px bg-linear-to-r from-transparent via-ink-gold-dim to-transparent my-7 mx-auto" />
@@ -52,7 +52,8 @@ export default function LandingInk() {
       <div className="flex flex-col items-center gap-5 w-full max-w-95 animate-[fadeUp_1s_ease_0.35s_both]">
         {subscribed ? (
           <p className="italic text-ink-warm text-[0.9rem] text-center">
-            <span aria-hidden="true">✦</span> You&apos;re on the list. Thank you.
+            <span aria-hidden="true">✦</span> You&apos;re on the list. Thank
+            you.
           </p>
         ) : (
           <form

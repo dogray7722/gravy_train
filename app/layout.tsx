@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { DM_Sans, Playfair_Display, Lora } from "next/font/google";
+import { Playfair_Display, Lora } from "next/font/google";
 import { ThemeProvider } from "@/app/context/ThemeContext";
 import "./globals.css";
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-});
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -32,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}>
+    <html lang="en" className={`${playfair.variable} ${lora.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {/* Runs before hydration; sets data-theme from localStorage to prevent FOUC. */}
         <Script id="theme-init" strategy="beforeInteractive">
