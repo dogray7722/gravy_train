@@ -100,7 +100,7 @@ export default function BlogLayout({ posts }: Props) {
 
       <div
         id="main-content"
-        className="flex max-w-screen-xl mx-auto px-8 items-start"
+        className="flex max-w-7xl mx-auto px-8 items-start"
       >
         {/* Main content */}
         <div className="flex-1 min-w-0 border-r border-(--ink-border-soft) pr-10">

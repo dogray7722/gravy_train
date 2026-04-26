@@ -11,13 +11,16 @@ interface Props {
 export default function PostDetail({ post, content }: Props) {
   return (
     <main id="main-content" className="max-w-[65ch] mx-auto px-6 py-16">
-      {/* Back link */}
-      <Link
-        href="/blog"
-        className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
-      >
-        ← Back to Blog
-      </Link>
+      {/* Back link + theme toggle */}
+      <div className="flex items-center justify-between">
+        <Link
+          href="/blog"
+          className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
+        >
+          ← Back to Blog
+        </Link>
+        <ThemeToggle />
+      </div>
 
       {/* Category */}
       <p className="text-[0.75rem] tracking-[0.18em] uppercase text-ink-warm italic mt-8 mb-3">

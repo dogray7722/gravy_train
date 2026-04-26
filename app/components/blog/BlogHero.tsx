@@ -6,7 +6,7 @@ export default function BlogHero({ post }: { post: Post }) {
   return (
     <section className="py-10 mb-0">
       {/* Section label with decorative line */}
-      <p className="flex items-center gap-3 text-[0.75rem] tracking-[0.25em] uppercase text-ink-warm italic mb-5 after:content-[''] after:flex-1 after:h-px after:bg-gradient-to-r after:from-(--ink-decor-line-strong) after:to-transparent">
+      <p className="flex items-center gap-3 text-[0.75rem] tracking-[0.25em] uppercase text-ink-warm italic mb-5 after:content-[''] after:flex-1 after:h-px after:bg-linear-to-r after:from-(--ink-decor-line-strong) after:to-transparent">
         Featured
       </p>
 
@@ -15,7 +15,7 @@ export default function BlogHero({ post }: { post: Post }) {
           <img
             src={post.imageSrc}
             alt=""
-            className="w-full h-[17.5rem] object-cover mb-6 border border-(--ink-border-soft)"
+            className="w-full h-70 object-cover mb-6 border border-(--ink-border-soft)"
           />
         )}
 
@@ -29,7 +29,7 @@ export default function BlogHero({ post }: { post: Post }) {
           </h1>
         </Link>
 
-        <p className="text-base italic text-ink-warm leading-[1.85] max-w-[600px] mb-6">
+        <p className="text-base italic text-ink-warm leading-[1.85] max-w-150 mb-6">
           {post.excerpt}
         </p>
 

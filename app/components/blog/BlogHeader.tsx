@@ -23,7 +23,7 @@ export default function BlogHeader({
   return (
     <header className="bg-(--ink-overlay-header) backdrop-blur-md border-b border-(--ink-border-strong) px-8 sm:px-12 sticky top-0 z-50">
       {/* Top row */}
-      <div className="flex items-center justify-between h-[4.375rem] border-b border-(--ink-border-subtle)">
+      <div className="flex items-center justify-between h-17.5 border-b border-(--ink-border-subtle)">
         <Link
           href="/"
           className="[font-family:var(--font-playfair)] text-[1.8rem] font-bold text-ink-text no-underline"

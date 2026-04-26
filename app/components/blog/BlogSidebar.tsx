@@ -1,6 +1,11 @@
 "use client";
 
-import type { CategoryFilter, ArchiveYear, ActiveArchive, SortOrder } from "@/lib/types";
+import type {
+  CategoryFilter,
+  ArchiveYear,
+  ActiveArchive,
+  SortOrder
+} from "@/lib/types";
 
 interface Props {
   isOpen: boolean;
@@ -32,11 +37,11 @@ export default function BlogSidebar({
   return (
     <aside
       className={`hidden sm:block shrink-0 overflow-hidden transition-[width,opacity] duration-300 ease-in-out ${
-        isOpen ? "w-[17.5rem] opacity-100" : "w-0 opacity-0 pointer-events-none"
+        isOpen ? "w-70 opacity-100" : "w-0 opacity-0 pointer-events-none"
       }`}
     >
       <div
-        className="w-[17.5rem] pl-8 py-10 sticky"
+        className="w-70 pl-8 py-10 sticky"
         style={{ top: "var(--header-height)" }}
       >
         {/* Search */}
