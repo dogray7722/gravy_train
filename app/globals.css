@@ -5,25 +5,107 @@
   --foreground: #171717;
   /* Total sticky header height (top row 4.375rem + nav row 2.75rem) */
   --header-height: 7.125rem;
+
+  /* RGBA overlay / surface tokens — dark defaults */
+  --ink-overlay-header:          rgba(20,15,10,0.95);
+  --ink-overlay-dropdown:        rgba(20,15,10,0.97);
+  --ink-border-strong:           rgba(180,140,80,0.18);
+  --ink-border-subtle:           rgba(180,140,80,0.1);
+  --ink-border-mid:              rgba(180,140,80,0.15);
+  --ink-border-soft:             rgba(180,140,80,0.12);
+  --ink-border-faint:            rgba(180,140,80,0.08);
+  --ink-border-input:            rgba(180,140,80,0.22);
+  --ink-border-input-focus:      rgba(180,140,80,0.55);
+  --ink-border-btn:              rgba(180,140,80,0.25);
+  --ink-border-subscribe:        rgba(180,140,80,0.5);
+  --ink-border-form:             rgba(180,140,80,0.3);
+  --ink-surface-input:           rgba(255,255,255,0.04);
+  --ink-surface-btn:             rgba(255,255,255,0.06);
+  --ink-surface-subscribe:       rgba(180,140,80,0.08);
+  --ink-surface-subscribe-hover: rgba(255,255,255,0.08);
+  --ink-surface-hero:            rgba(255,255,255,0.02);
+  --ink-surface-cta:             rgba(180,140,80,0.06);
+  --ink-grid-gap:                rgba(180,140,80,0.12);
+  --ink-decor-line:              rgba(180,140,80,0.3);
+  --ink-decor-line-strong:       rgba(180,140,80,0.4);
+  --ink-glyph-color:             rgba(180,140,80,0.04);
+  --ink-blob-warm:               radial-gradient(circle, rgba(180,140,80,0.07) 0%, transparent 70%);
+  --ink-blob-cool:               radial-gradient(circle, rgba(180,140,80,0.08) 0%, transparent 70%);
+  --ink-page-gradient:
+    radial-gradient(ellipse 70% 40% at 10% 90%, rgba(180,140,90,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 90% 10%, rgba(200,160,100,0.06) 0%, transparent 50%);
+  --ink-landing-gradient:
+    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(180,140,90,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(200,160,100,0.10) 0%, transparent 50%);
 }
 
+/* inline: var-reference theme values (avoids var indirection) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
+}
 
-  /* Blog theme — warm dark ink palette */
+/* Regular @theme: generates var(--color-ink-*) references in utilities,
+   so [data-theme="light"] overrides below cascade to all components. */
+@theme {
+  /* Blog theme — warm dark ink palette (default / dark mode) */
   --color-ink-bg:       #2c2620;
   --color-ink-surface:  #332c26;
   --color-ink-dark:     #140f0a;
   --color-ink-text:     #f0e8d5;
   --color-ink-warm:     #c4b89a;
-  --color-ink-muted:    #bfae90; /* lightened from #a09070 — min 5:1 on ink-bg */
-  --color-ink-subtle:   #a08a68; /* lightened from #7a6a50 — use for UI text only */
+  --color-ink-muted:    #bfae90;
+  --color-ink-subtle:   #a08a68;
   /* ink-faint: decorative borders/gradients only — do not use for text */
-  --color-ink-faint:    #8a7860; /* lightened from #6a5e4e */
+  --color-ink-faint:    #8a7860;
   --color-ink-gold:     #c9a96e;
-  --color-ink-gold-dim: #c09a5e; /* lightened from #b48c50 */
+  --color-ink-gold-dim: #c09a5e;
+}
+
+/* Light mode overrides — all ink-* vars and RGBA tokens */
+[data-theme="light"] {
+  --color-ink-bg:       #f5efe4;
+  --color-ink-surface:  #ede5d8;
+  --color-ink-dark:     #120c04;
+  --color-ink-text:     #14100a;  /* near-black, 16.9:1 */
+  --color-ink-warm:     #2e2010;  /* deep warm brown, 12.8:1 */
+  --color-ink-muted:    #3d2f18;  /* darker tertiary, 9.8:1 */
+  --color-ink-subtle:   #4d3a20;  /* UI labels, 7.6:1 */
+  --color-ink-faint:    #6a5030;  /* decorative only, 5.3:1 */
+  --color-ink-gold:     #7a5a18;  /* gold accent, 5.6:1 */
+  --color-ink-gold-dim: #6a4d12;  /* deeper gold, 6.8:1 */
+
+  --ink-overlay-header:          rgba(245,239,228,0.95);
+  --ink-overlay-dropdown:        rgba(237,229,216,0.98);
+  --ink-border-strong:           rgba(140,104,32,0.28);
+  --ink-border-subtle:           rgba(140,104,32,0.15);
+  --ink-border-mid:              rgba(140,104,32,0.22);
+  --ink-border-soft:             rgba(140,104,32,0.18);
+  --ink-border-faint:            rgba(140,104,32,0.12);
+  --ink-border-input:            rgba(140,104,32,0.35);
+  --ink-border-input-focus:      rgba(140,104,32,0.70);
+  --ink-border-btn:              rgba(140,104,32,0.30);
+  --ink-border-subscribe:        rgba(140,104,32,0.55);
+  --ink-border-form:             rgba(140,104,32,0.25);
+  --ink-surface-input:           rgba(0,0,0,0.04);
+  --ink-surface-btn:             rgba(0,0,0,0.06);
+  --ink-surface-subscribe:       rgba(140,104,32,0.08);
+  --ink-surface-subscribe-hover: rgba(0,0,0,0.06);
+  --ink-surface-hero:            rgba(0,0,0,0.02);
+  --ink-surface-cta:             rgba(140,104,32,0.06);
+  --ink-grid-gap:                rgba(140,104,32,0.15);
+  --ink-decor-line:              rgba(140,104,32,0.25);
+  --ink-decor-line-strong:       rgba(140,104,32,0.35);
+  --ink-glyph-color:             rgba(140,104,32,0.05);
+  --ink-blob-warm:               radial-gradient(circle, rgba(140,104,32,0.05) 0%, transparent 70%);
+  --ink-blob-cool:               radial-gradient(circle, rgba(140,104,32,0.06) 0%, transparent 70%);
+  --ink-page-gradient:
+    radial-gradient(ellipse 70% 40% at 10% 90%, rgba(140,104,32,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 90% 10%, rgba(160,120,60,0.05) 0%, transparent 50%);
+  --ink-landing-gradient:
+    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(140,104,32,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(160,120,60,0.07) 0%, transparent 50%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,9 +116,10 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-ink-bg);
+  color: var(--color-ink-text);
   font-family: var(--font-sans), sans-serif;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
 @keyframes fadeUp {

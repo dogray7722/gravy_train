@@ -10,7 +10,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
           src={post.imageSrc}
           alt=""
           loading="lazy"
-          className="w-full aspect-video object-cover mb-4 border border-[rgba(180,140,80,0.12)]"
+          className="w-full aspect-video object-cover mb-4 border border-(--ink-border-soft)"
         />
       )}
       {post.type === "video" && post.videoId && (

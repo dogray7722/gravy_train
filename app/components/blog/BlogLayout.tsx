@@ -88,12 +88,7 @@ export default function BlogLayout({ posts }: Props) {
   return (
     <div
       className="min-h-screen bg-ink-bg text-ink-text [font-family:var(--font-lora)]"
-      style={{
-        backgroundImage: `
-          radial-gradient(ellipse 70% 40% at 10% 90%, rgba(180,140,90,0.09) 0%, transparent 55%),
-          radial-gradient(ellipse 50% 35% at 90% 10%, rgba(200,160,100,0.06) 0%, transparent 50%)
-        `
-      }}
+      style={{ backgroundImage: "var(--ink-page-gradient)" }}
     >
       <BlogHeader
         sidebarOpen={sidebarOpen}
@@ -105,10 +100,10 @@ export default function BlogLayout({ posts }: Props) {
 
       <div
         id="main-content"
-        className="flex max-w-screen-xl mx-auto px-8 items-start"
+        className="flex max-w-7xl mx-auto px-8 items-start"
       >
         {/* Main content */}
-        <div className="flex-1 min-w-0 border-r border-[rgba(180,140,80,0.12)] pr-10">
+        <div className="flex-1 min-w-0 border-r border-(--ink-border-soft) pr-10">
           {showFeatured && hero && <BlogHero post={hero} />}
           <BlogPostGrid posts={filtered} label={gridLabel} />
         </div>
@@ -129,7 +124,7 @@ export default function BlogLayout({ posts }: Props) {
         />
       </div>
 
-      <footer className="border-t border-[rgba(180,140,80,0.12)] py-10 px-8 text-center mt-auto">
+      <footer className="border-t border-(--ink-border-soft) py-10 px-8 text-center mt-auto">
         <p className="text-[0.75rem] text-ink-muted tracking-[0.12em] italic">
           The Gravy Train · Est. 2025
         </p>

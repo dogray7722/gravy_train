@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { ArchiveYear, ActiveArchive } from "@/lib/types";
 import ArchiveDropdown from "./ArchiveDropdown";
+import ThemeToggle from "./ThemeToggle";
 
 interface Props {
   sidebarOpen: boolean;
@@ -18,9 +21,9 @@ export default function BlogHeader({
   onArchiveChange
 }: Props) {
   return (
-    <header className="bg-[rgba(20,15,10,0.95)] backdrop-blur-md border-b border-[rgba(180,140,80,0.18)] px-8 sm:px-12 sticky top-0 z-50">
+    <header className="bg-(--ink-overlay-header) backdrop-blur-md border-b border-(--ink-border-strong) px-8 sm:px-12 sticky top-0 z-50">
       {/* Top row */}
-      <div className="flex items-center justify-between h-[4.375rem] border-b border-[rgba(180,140,80,0.1)]">
+      <div className="flex items-center justify-between h-17.5 border-b border-(--ink-border-subtle)">
         <Link
           href="/"
           className="[font-family:var(--font-playfair)] text-[1.8rem] font-bold text-ink-text no-underline"
@@ -34,13 +37,14 @@ export default function BlogHeader({
           </span>
           <Link
             href="/#subscribe"
-            className="px-5 py-2 border border-[rgba(180,140,80,0.5)] bg-[rgba(180,140,80,0.08)] text-ink-warm text-[0.75rem] italic tracking-[0.12em] uppercase transition-colors hover:bg-[rgba(255,255,255,0.08)] hover:border-ink-warm hover:text-ink-text"
+            className="px-5 py-2 border border-(--ink-border-subscribe) bg-(--ink-surface-subscribe) text-ink-warm text-[0.75rem] italic tracking-[0.12em] uppercase transition-colors hover:bg-(--ink-surface-subscribe-hover) hover:border-ink-warm hover:text-ink-text"
           >
             <span aria-hidden="true">✦</span> Subscribe
           </Link>
+          <ThemeToggle />
           <button
             onClick={onToggleSidebar}
-            className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors text-base cursor-pointer"
+            className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors text-base cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
             aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
           >
             {sidebarOpen ? "✕" : "☰"}

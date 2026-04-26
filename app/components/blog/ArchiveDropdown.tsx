@@ -9,7 +9,11 @@ interface Props {
   onArchiveChange: (archive: ActiveArchive | null) => void;
 }
 
-export default function ArchiveDropdown({ archiveYears, activeArchive, onArchiveChange }: Props) {
+export default function ArchiveDropdown({
+  archiveYears,
+  activeArchive,
+  onArchiveChange
+}: Props) {
   const [open, setOpen] = useState(false);
   const [expandedYears, setExpandedYears] = useState<Set<number>>(new Set());
   const ref = useRef<HTMLDivElement>(null);
@@ -36,7 +40,11 @@ export default function ArchiveDropdown({ archiveYears, activeArchive, onArchive
     onArchiveChange({ year, month: null });
     setExpandedYears((prev) => {
       const next = new Set(prev);
-      if (next.has(year)) { next.delete(year); } else { next.add(year); }
+      if (next.has(year)) {
+        next.delete(year);
+      } else {
+        next.add(year);
+      }
       return next;
     });
   };
@@ -62,11 +70,14 @@ export default function ArchiveDropdown({ archiveYears, activeArchive, onArchive
 
       {/* Dropdown panel */}
       {open && (
-        <div className="absolute top-full left-0 mt-1 bg-[rgba(20,15,10,0.97)] border border-[rgba(180,140,80,0.18)] min-w-[10rem] z-50 py-2 backdrop-blur-md">
+        <div className="absolute top-full left-0 mt-1 bg-(--ink-overlay-dropdown) border border-(--ink-border-strong) min-w-40 z-50 py-2 backdrop-blur-md">
           {/* Clear filter */}
           {isActive && (
             <button
-              onClick={() => { onArchiveChange(null); setOpen(false); }}
+              onClick={() => {
+                onArchiveChange(null);
+                setOpen(false);
+              }}
               className="w-full text-left px-4 py-[0.35rem] text-[0.7rem] tracking-[0.12em] uppercase text-ink-gold italic hover:text-ink-text transition-colors bg-transparent border-0 cursor-pointer"
             >
               ← Clear filter
@@ -104,7 +115,9 @@ export default function ArchiveDropdown({ archiveYears, activeArchive, onArchive
                       }`}
                     >
                       <span>{mo.label}</span>
-                      <span className="text-ink-faint text-[0.7rem] ml-3">{mo.count}</span>
+                      <span className="text-ink-faint text-[0.7rem] ml-3">
+                        {mo.count}
+                      </span>
                     </button>
                   ))}
                 </div>
