@@ -2,8 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-@AGENTS.md
-
 ## Summary
 
 This application is for a personal blog that will include text, pictures, and embedded videos from YouTube links. The idea is to be a more comprehensive personal portfolio than just a social media account. At the time of writing the plan is to have the blog content be comprised of local MDX components, though at some point it may be paired with a CMS.
