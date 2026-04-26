@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { PanelLeft, PanelLeftClose } from "lucide-react";
 import type { ArchiveYear, ActiveArchive } from "@/lib/types";
 import ArchiveDropdown from "./ArchiveDropdown";
 import ThemeToggle from "./ThemeToggle";
@@ -44,10 +45,10 @@ export default function BlogHeader({
           <ThemeToggle />
           <button
             onClick={onToggleSidebar}
-            className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors text-base cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
+            className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
             aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
           >
-            {sidebarOpen ? "✕" : "☰"}
+            {sidebarOpen ? <PanelLeftClose size={20} /> : <PanelLeft size={20} />}
           </button>
         </div>
       </div>
