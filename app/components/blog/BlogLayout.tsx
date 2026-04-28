@@ -33,15 +33,32 @@ export default function BlogLayout({ posts }: Props) {
     null
   );
   const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+  const [randomPostId, setRandomPostId] = useState<number | null>(null);
+
+  const handleCategoryChange = (cat: CategoryFilter) => {
+    if (cat === "random") {
+      const pool = posts.filter((p) => !p.featured);
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      setRandomPostId(pick.id);
+    }
+    setActiveCategory(cat);
+  };
 
   const archiveYears = useMemo(() => computeArchive(posts), [posts]);
 
   const hero = useMemo(() => posts.find((p) => p.featured), [posts]);
 
   const filtered = useMemo(() => {
+    const heroVisible =
+      activeCategory === "all" && search === "" && !activeArchive && sortOrder === "newest";
+
     return posts
-      .filter((p) => !p.featured)
-      .filter((p) => activeCategory === "all" || p.category === activeCategory)
+      .filter((p) => (heroVisible ? !p.featured : true))
+      .filter((p) => {
+        if (activeCategory === "all") return true;
+        if (activeCategory === "random") return p.id === randomPostId;
+        return p.category === activeCategory;
+      })
       .filter(
         (p) =>
           search === "" ||
@@ -60,13 +77,14 @@ export default function BlogLayout({ posts }: Props) {
         return true;
       })
       .sort((a, b) => {
-        const diff = new Date(b.date).getTime() - new Date(a.date).getTime();
-        return sortOrder === "newest" ? diff : -diff;
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
       });
-  }, [posts, activeCategory, search, activeArchive, sortOrder]);
+  }, [posts, activeCategory, search, activeArchive, sortOrder, randomPostId]);
 
   const showFeatured =
-    activeCategory === "all" && search === "" && activeArchive === null;
+    activeCategory === "all" && search === "" && activeArchive === null && sortOrder === "newest";
 
   const gridLabel = (() => {
     if (activeArchive) {
@@ -117,7 +135,7 @@ export default function BlogLayout({ posts }: Props) {
           activeArchive={activeArchive}
           search={search}
           sortOrder={sortOrder}
-          onCategoryChange={setActiveCategory}
+          onCategoryChange={handleCategoryChange}
           onSearchChange={setSearch}
           onArchiveChange={setActiveArchive}
           onSortChange={setSortOrder}

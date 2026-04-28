@@ -31,7 +31,7 @@ export interface Post {
   date: string;       // ISO string e.g. "2026-03-18"
   readTime: string;   // e.g. "7 min read"
   excerpt: string;
-  type: PostType;
+  type?: PostType;
   featured?: boolean;
   imageSrc?: string;  // for type === "image"
   videoId?: string;   // YouTube video ID for type === "video"
