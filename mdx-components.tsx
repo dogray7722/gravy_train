@@ -1,4 +1,7 @@
 import type { MDXComponents } from "mdx/types";
+import PostImage from "@/app/components/mdx/PostImage";
+import YouTubeEmbed from "@/app/components/mdx/YouTubeEmbed";
+import ImageGallery from "@/app/components/mdx/ImageGallery";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -37,6 +40,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => (
       <hr className="border-none h-px bg-gradient-to-r from-transparent via-[rgba(180,140,80,0.3)] to-transparent my-10" />
     ),
+    PostImage,
+    YouTubeEmbed,
+    ImageGallery,
     ...components,
   };
 }

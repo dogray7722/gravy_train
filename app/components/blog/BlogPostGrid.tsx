@@ -19,7 +19,7 @@ export default function BlogPostGrid({ posts, label }: Props) {
           No posts found.
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-(--ink-grid-gap)">
+        <div className={`grid ${posts.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"} gap-px bg-(--ink-grid-gap)`}>
           {posts.map((post, i) => (
             <div
               key={post.id}

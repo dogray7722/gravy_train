@@ -38,14 +38,14 @@ export default function PostDetail({ post, content }: Props) {
       </p>
 
       {/* Hero media */}
-      {post.type === "image" && post.imageSrc && (
+      {post.imageSrc && (
         <img
           src={post.imageSrc}
           alt=""
           className="w-full mb-10 border border-(--ink-border-soft)"
         />
       )}
-      {post.type === "video" && post.videoId && (
+      {post.videoId && !post.imageSrc && (
         <div className="w-full aspect-video mb-10">
           <iframe
             src={`https://www.youtube.com/embed/${post.videoId}`}

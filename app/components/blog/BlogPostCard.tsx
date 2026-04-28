@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/posts";
 export default function BlogPostCard({ post }: { post: Post }) {
   return (
     <article className="bg-ink-bg p-7 hover:bg-ink-surface transition-colors h-full group">
-      {post.type === "image" && post.imageSrc && (
+      {post.imageSrc && (
         <img
           src={post.imageSrc}
           alt=""
@@ -13,7 +13,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
           className="w-full aspect-video object-cover mb-4 border border-(--ink-border-soft)"
         />
       )}
-      {post.type === "video" && post.videoId && (
+      {post.videoId && !post.imageSrc && (
         <iframe
           src={`https://www.youtube.com/embed/${post.videoId}`}
           title={post.title}

@@ -2,6 +2,18 @@ import type { Post, CategoryFilter, ArchiveYear } from "./types";
 
 export const POSTS: Post[] = [
   {
+    id: 7,
+    slug: "five-days-on-the-amalfi-coast",
+    category: "travel",
+    title: "Five Days on the Amalfi Coast",
+    date: "2026-04-20",
+    readTime: "6 min read",
+    excerpt:
+      "Nobody tells you about the stairs. You read 'perched on a cliff' and you imagine the view.",
+    imageSrc:
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80",
+  },
+  {
     id: 1,
     slug: "lost-somewhere-between-lisbon-and-porto",
     category: "travel",
