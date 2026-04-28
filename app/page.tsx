@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 
+type Status = "idle" | "loading" | "success" | "error" | "duplicate";
+
 export default function LandingInk() {
   const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   return (
     <div
@@ -49,38 +52,67 @@ export default function LandingInk() {
 
       <div className="w-20 h-px bg-linear-to-r from-transparent via-ink-gold-dim to-transparent my-7 mx-auto" />
 
-      <div className="flex flex-col items-center gap-5 w-full max-w-95 animate-[fadeUp_1s_ease_0.35s_both]">
-        {subscribed ? (
+      <div id="subscribe" className="flex flex-col items-center gap-5 w-full max-w-95 animate-[fadeUp_1s_ease_0.35s_both]">
+        {status === "success" || status === "duplicate" ? (
           <p className="italic text-ink-warm text-[0.9rem] text-center">
-            <span aria-hidden="true">✦</span> You&apos;re on the list. Thank
-            you.
+            <span aria-hidden="true">✦</span>{" "}
+            {status === "duplicate"
+              ? "You're already on the list."
+              : "You're on the list. Thank you."}
           </p>
         ) : (
           <form
-            className="flex w-full border border-(--ink-border-form) bg-white/3"
-            onSubmit={(e) => {
+            className="flex flex-col w-full gap-2"
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (email) setSubscribed(true);
+              setStatus("loading");
+              setErrorMsg("");
+              try {
+                const res = await fetch("/api/subscribe", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email }),
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                  setErrorMsg(data.error ?? "Something went wrong.");
+                  setStatus("error");
+                } else if (data.message === "already_subscribed") {
+                  setStatus("duplicate");
+                } else {
+                  setStatus("success");
+                }
+              } catch {
+                setErrorMsg("Network error. Please try again.");
+                setStatus("error");
+              }
             }}
           >
-            <label htmlFor="subscribe-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="subscribe-email"
-              className="flex-1 py-[0.85rem] px-4 bg-transparent border-0 outline-none text-ink-text [font-family:var(--font-lora)] text-[0.9rem] placeholder:text-ink-subtle"
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button
-              className="py-[0.85rem] px-[1.4rem] bg-ink-gold border-0 text-ink-bg [font-family:var(--font-lora)] text-[0.8rem] font-bold tracking-widest uppercase cursor-pointer transition-colors duration-200 whitespace-nowrap hover:bg-ink-gold-dim"
-              type="submit"
-            >
-              Subscribe
-            </button>
+            <div className="flex w-full border border-(--ink-border-form) bg-white/3">
+              <label htmlFor="subscribe-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="subscribe-email"
+                className="flex-1 py-[0.85rem] px-4 bg-transparent border-0 outline-none text-ink-text [font-family:var(--font-lora)] text-[0.9rem] placeholder:text-ink-subtle"
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === "loading"}
+              />
+              <button
+                className="py-[0.85rem] px-[1.4rem] bg-ink-gold border-0 text-ink-bg [font-family:var(--font-lora)] text-[0.8rem] font-bold tracking-widest uppercase cursor-pointer transition-colors duration-200 whitespace-nowrap hover:bg-ink-gold-dim disabled:opacity-60"
+                type="submit"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "…" : "Subscribe"}
+              </button>
+            </div>
+            {status === "error" && (
+              <p className="text-red-400 text-[0.8rem] text-center">{errorMsg}</p>
+            )}
           </form>
         )}
 
