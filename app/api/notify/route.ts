@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { Resend } from "resend";
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Post not found." }, { status: 404 });
   }
 
+  const db = getDb();
   const activeSubscribers = await db
     .select()
     .from(subscribers)

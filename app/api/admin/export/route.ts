@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 
 export async function GET() {
@@ -10,6 +10,7 @@ export async function GET() {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  const db = getDb();
   const rows = await db.select().from(subscribers);
 
   const lines = [

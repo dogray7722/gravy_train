@@ -19,16 +19,20 @@ export default function AdminDashboard({ subscribers: initialSubs, posts }: Prop
 
   async function handleNotify() {
     setNotifyStatus("Sending…");
-    const res = await fetch("/api/admin/notify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ postSlug: selectedSlug }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setNotifyStatus(`Sent to ${data.sent} subscriber${data.sent !== 1 ? "s" : ""}.`);
-    } else {
-      setNotifyStatus(`Error: ${data.error ?? "Unknown error"}`);
+    try {
+      const res = await fetch("/api/admin/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ postSlug: selectedSlug }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        setNotifyStatus(`Sent to ${data.sent} subscriber${data.sent !== 1 ? "s" : ""}.`);
+      } else {
+        setNotifyStatus(`Error: ${data.error ?? `HTTP ${res.status}`}`);
+      }
+    } catch (err) {
+      setNotifyStatus(`Error: ${err instanceof Error ? err.message : "Network error"}`);
     }
   }
 

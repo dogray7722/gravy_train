@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lora.variable} h-full antialiased`}>
+    <html lang="en" className={`${playfair.variable} ${lora.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         {/* Runs before hydration; sets data-theme from localStorage to prevent FOUC. */}
         <Script id="theme-init" strategy="beforeInteractive">

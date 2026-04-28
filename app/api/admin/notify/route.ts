@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { Resend } from "resend";
@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Post not found." }, { status: 404 });
   }
 
+  const db = getDb();
   const activeSubscribers = await db
     .select()
     .from(subscribers)
@@ -46,37 +47,42 @@ export async function POST(req: NextRequest) {
   }
 
   let totalSent = 0;
-  for (const chunk of chunks) {
-    const messages = chunk.map((sub) => {
-      const unsubUrl = `${siteUrl}/api/unsubscribe?token=${sub.unsubscribeToken}`;
-      return {
-        from: fromEmail,
-        to: sub.email,
-        subject: `New post: ${post.title}`,
-        html: `
-          <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2c2620;padding:2rem">
-            <h2 style="font-family:Georgia,serif;font-size:1.4rem;font-weight:700;margin-bottom:0.5rem">
-              ${post.title}
-            </h2>
-            <p style="font-size:1rem;line-height:1.7;color:#4a3f30">
-              ${post.excerpt}
-            </p>
-            <a href="${postUrl}"
-               style="display:inline-block;margin-top:1rem;padding:0.7rem 1.4rem;background:#c9a96e;color:#2c2620;font-family:Georgia,serif;font-size:0.85rem;font-weight:700;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase">
-              Read Now
-            </a>
-            <hr style="border:none;border-top:1px solid rgba(180,140,80,0.3);margin:1.5rem 0"/>
-            <p style="font-size:0.8rem;color:#a08a68">
-              You're receiving this because you subscribed to the Gravy Train.
-              <a href="${unsubUrl}" style="color:#a08a68">Unsubscribe.</a>
-            </p>
-          </div>
-        `,
-      };
-    });
+  try {
+    for (const chunk of chunks) {
+      const messages = chunk.map((sub) => {
+        const unsubUrl = `${siteUrl}/api/unsubscribe?token=${sub.unsubscribeToken}`;
+        return {
+          from: fromEmail,
+          to: sub.email,
+          subject: `New post: ${post.title}`,
+          html: `
+            <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2c2620;padding:2rem">
+              <h2 style="font-family:Georgia,serif;font-size:1.4rem;font-weight:700;margin-bottom:0.5rem">
+                ${post.title}
+              </h2>
+              <p style="font-size:1rem;line-height:1.7;color:#4a3f30">
+                ${post.excerpt}
+              </p>
+              <a href="${postUrl}"
+                 style="display:inline-block;margin-top:1rem;padding:0.7rem 1.4rem;background:#c9a96e;color:#2c2620;font-family:Georgia,serif;font-size:0.85rem;font-weight:700;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase">
+                Read Now
+              </a>
+              <hr style="border:none;border-top:1px solid rgba(180,140,80,0.3);margin:1.5rem 0"/>
+              <p style="font-size:0.8rem;color:#a08a68">
+                You're receiving this because you subscribed to the Gravy Train.
+                <a href="${unsubUrl}" style="color:#a08a68">Unsubscribe.</a>
+              </p>
+            </div>
+          `,
+        };
+      });
 
-    await resend.batch.send(messages);
-    totalSent += chunk.length;
+      await resend.batch.send(messages);
+      totalSent += chunk.length;
+    }
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Resend error";
+    return NextResponse.json({ error: message }, { status: 502 });
   }
 
   return NextResponse.json({ sent: totalSent });

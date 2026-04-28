@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { Resend } from "resend";
@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
   }
 
   const normalized = email.toLowerCase().trim();
+  const db = getDb();
 
   const existing = await db
     .select()
@@ -48,27 +49,31 @@ export async function POST(req: NextRequest) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const unsubscribeUrl = `${siteUrl}/api/unsubscribe?token=${token}`;
 
-  await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev",
-    to: normalized,
-    subject: "You're on the Gravy Train",
-    html: `
-      <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2c2620;padding:2rem">
-        <h2 style="font-family:Georgia,serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">
-          Welcome aboard.
-        </h2>
-        <p style="font-size:1rem;line-height:1.7;color:#4a3f30">
-          You're now subscribed to the Gravy Train. I'll drop you a note whenever
-          something new goes up — no spam, no cadence, just new posts.
-        </p>
-        <hr style="border:none;border-top:1px solid rgba(180,140,80,0.3);margin:1.5rem 0"/>
-        <p style="font-size:0.8rem;color:#a08a68">
-          Changed your mind?
-          <a href="${unsubscribeUrl}" style="color:#a08a68">Unsubscribe here.</a>
-        </p>
-      </div>
-    `,
-  });
+  try {
+    await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev",
+      to: normalized,
+      subject: "You're on the Gravy Train",
+      html: `
+        <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2c2620;padding:2rem">
+          <h2 style="font-family:Georgia,serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem">
+            Welcome aboard.
+          </h2>
+          <p style="font-size:1rem;line-height:1.7;color:#4a3f30">
+            You're now subscribed to the Gravy Train. I'll drop you a note whenever
+            something new goes up — no spam, no cadence, just new posts.
+          </p>
+          <hr style="border:none;border-top:1px solid rgba(180,140,80,0.3);margin:1.5rem 0"/>
+          <p style="font-size:0.8rem;color:#a08a68">
+            Changed your mind?
+            <a href="${unsubscribeUrl}" style="color:#a08a68">Unsubscribe here.</a>
+          </p>
+        </div>
+      `,
+    });
+  } catch {
+    // Subscriber is stored; welcome email failure is non-fatal
+  }
 
   return NextResponse.json({ success: true });
 }

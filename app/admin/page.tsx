@@ -1,7 +1,5 @@
-"use server";
-
 import { cookies } from "next/headers";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 import { getAllPosts } from "@/lib/posts";
 import AdminDashboard from "./AdminDashboard";
@@ -16,7 +14,7 @@ export default async function AdminPage() {
     return <AdminLogin />;
   }
 
-  const rows = await db.select().from(subscribers);
+  const rows = await getDb().select().from(subscribers);
   const posts = getAllPosts();
 
   return <AdminDashboard subscribers={rows} posts={posts} />;

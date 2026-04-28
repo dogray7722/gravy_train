@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { subscribers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
@@ -9,6 +9,8 @@ export async function GET(req: NextRequest) {
   if (!token) {
     return NextResponse.redirect(new URL("/unsubscribed?status=invalid", req.url));
   }
+
+  const db = getDb();
 
   const subscriber = await db
     .select()
