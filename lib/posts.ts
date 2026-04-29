@@ -11,7 +11,7 @@ export const POSTS: Post[] = [
     excerpt:
       "Nobody tells you about the stairs. You read 'perched on a cliff' and you imagine the view.",
     imageSrc:
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80",
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80"
   },
   {
     id: 1,
@@ -25,7 +25,7 @@ export const POSTS: Post[] = [
     type: "image",
     featured: true,
     imageSrc:
-      "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80",
+      "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80"
   },
   {
     id: 2,
@@ -36,12 +36,12 @@ export const POSTS: Post[] = [
     readTime: "5 min read",
     excerpt:
       "Social media had me performing a version of myself I no longer recognized.",
-    type: "text",
+    type: "text"
   },
   {
     id: 3,
     slug: "making-bolognese-at-midnight",
-    category: "random",
+    category: "thoughts",
     title: "Making Bolognese at Midnight",
     date: "2026-02-22",
     readTime: "4 min read",
@@ -49,19 +49,18 @@ export const POSTS: Post[] = [
       "No recipe. No plan. Just a bottle of red and whatever's in the fridge.",
     type: "image",
     imageSrc:
-      "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800&q=80",
+      "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800&q=80"
   },
   {
     id: 4,
-    slug: "48-hours-in-oaxaca",
+    slug: "bear-creek-trail",
     category: "travel",
-    title: "48 Hours in Oaxaca",
+    title: "Traversing the Bear Creek Trail",
     date: "2026-02-10",
     readTime: "8 min read",
-    excerpt:
-      "Mezcal for breakfast is only controversial if you've never had Oaxacan mezcal.",
+    excerpt: "A ride along the bear creek trail.",
     type: "video",
-    videoId: "ylXk1LBvIqU",
+    videoId: "Y50pwVVMbLk "
   },
   {
     id: 5,
@@ -73,7 +72,7 @@ export const POSTS: Post[] = [
     excerpt:
       "First episode. A conversation about leaving things behind and building something new.",
     type: "video",
-    videoId: "ylXk1LBvIqU",
+    videoId: "ylXk1LBvIqU"
   },
   {
     id: 6,
@@ -84,8 +83,8 @@ export const POSTS: Post[] = [
     readTime: "3 min read",
     excerpt:
       "Moving fast is a personality trait we've collectively mistaken for a virtue.",
-    type: "text",
-  },
+    type: "text"
+  }
 ];
 
 export function getAllPosts(): Post[] {
@@ -130,9 +129,11 @@ export function computeArchive(posts: Post[]): ArchiveYear[] {
         .sort(([a], [b]) => b - a)
         .map(([month, count]) => ({
           month,
-          label: new Date(year, month - 1).toLocaleString("default", { month: "long" }),
-          count,
-        })),
+          label: new Date(year, month - 1).toLocaleString("default", {
+            month: "long"
+          }),
+          count
+        }))
     }));
 }
 
@@ -140,6 +141,6 @@ export function formatDate(isoDate: string): string {
   return new Date(isoDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
-    day: "numeric",
+    day: "numeric"
   });
 }
