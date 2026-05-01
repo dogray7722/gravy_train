@@ -40,39 +40,36 @@ export const POSTS: Post[] = [
   },
   {
     id: 3,
-    slug: "making-bolognese-at-midnight",
-    category: "thoughts",
-    title: "Making Bolognese at Midnight",
-    date: "2026-02-22",
+    slug: "lee-gulch-ride",
+    category: "cycling",
+    title: "Riding Lee Gulch",
+    date: "2026-03-29",
     readTime: "4 min read",
-    excerpt:
-      "No recipe. No plan. Just a bottle of red and whatever's in the fridge.",
-    type: "image",
-    imageSrc:
-      "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=800&q=80"
+    excerpt: "A spring ride on the South Suburban Trail system",
+    type: "video",
+    videoId: "B3KZwqWr8Ks "
   },
   {
     id: 4,
     slug: "bear-creek-trail",
-    category: "travel",
+    category: "cycling",
     title: "Traversing the Bear Creek Trail",
     date: "2026-02-10",
-    readTime: "8 min read",
-    excerpt: "A ride along the bear creek trail.",
+    readTime: "4 min read",
+    excerpt: "A way too early trek on a path in the Denver suburbs",
     type: "video",
     videoId: "Y50pwVVMbLk "
   },
   {
     id: 5,
-    slug: "the-gravy-train-episode-one",
-    category: "video",
-    title: "The Gravy Train — Episode One",
-    date: "2026-01-30",
-    readTime: "22 min",
-    excerpt:
-      "First episode. A conversation about leaving things behind and building something new.",
+    slug: "bear-creek-part-two",
+    category: "cycling",
+    title: "Bear Creek Trail — Part 2",
+    date: "2026-02-11",
+    readTime: "4 min",
+    excerpt: "A continuation of my February ride down the Bear Creek Trail",
     type: "video",
-    videoId: "ylXk1LBvIqU"
+    videoId: "UtjHy7FkXRU "
   },
   {
     id: 6,

@@ -15,9 +15,9 @@ import BlogSidebar from "./BlogSidebar";
 
 const CATEGORIES: CategoryFilter[] = [
   "all",
-  "video",
   "travel",
   "thoughts",
+  "cycling",
   "random"
 ];
 
@@ -50,7 +50,10 @@ export default function BlogLayout({ posts }: Props) {
 
   const filtered = useMemo(() => {
     const heroVisible =
-      activeCategory === "all" && search === "" && !activeArchive && sortOrder === "newest";
+      activeCategory === "all" &&
+      search === "" &&
+      !activeArchive &&
+      sortOrder === "newest";
 
     return posts
       .filter((p) => (heroVisible ? !p.featured : true))
@@ -84,7 +87,10 @@ export default function BlogLayout({ posts }: Props) {
   }, [posts, activeCategory, search, activeArchive, sortOrder, randomPostId]);
 
   const showFeatured =
-    activeCategory === "all" && search === "" && activeArchive === null && sortOrder === "newest";
+    activeCategory === "all" &&
+    search === "" &&
+    activeArchive === null &&
+    sortOrder === "newest";
 
   const gridLabel = (() => {
     if (activeArchive) {
@@ -144,7 +150,7 @@ export default function BlogLayout({ posts }: Props) {
 
       <footer className="border-t border-(--ink-border-soft) py-10 px-8 text-center mt-auto">
         <p className="text-[0.75rem] text-ink-muted tracking-[0.12em] italic">
-          The Gravy Train · Est. 2025
+          The Gravy Train · Est. 2026
         </p>
       </footer>
     </div>

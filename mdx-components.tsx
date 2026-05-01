@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import PostImage from "@/app/components/mdx/PostImage";
 import YouTubeEmbed from "@/app/components/mdx/YouTubeEmbed";
 import ImageGallery from "@/app/components/mdx/ImageGallery";
+import PostLink from "@/app/components/mdx/PostLink";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -43,6 +44,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     PostImage,
     YouTubeEmbed,
     ImageGallery,
+    PostLink,
     ...components,
   };
 }

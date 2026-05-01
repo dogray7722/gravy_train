@@ -34,7 +34,7 @@ export default function BlogHeader({
 
         <div className="flex items-center gap-6">
           <span className="hidden sm:inline text-[0.75rem] tracking-[0.14em] uppercase text-ink-warm italic">
-            Est. 2026 · David Gray
+            David Gray · Est. 1977
           </span>
           <Link
             href="/#subscribe"
@@ -48,7 +48,11 @@ export default function BlogHeader({
             className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
             aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
           >
-            {sidebarOpen ? <PanelLeftClose size={20} /> : <PanelLeft size={20} />}
+            {sidebarOpen ? (
+              <PanelLeftClose size={20} />
+            ) : (
+              <PanelLeft size={20} />
+            )}
           </button>
         </div>
       </div>
