@@ -3,15 +3,15 @@ import type { Post, CategoryFilter, ArchiveYear } from "./types";
 export const POSTS: Post[] = [
   {
     id: 7,
-    slug: "five-days-on-the-amalfi-coast",
+    slug: "belize-and-points-west",
     category: "travel",
-    title: "Five Days on the Amalfi Coast",
+    title: "Belize And Points West",
     date: "2026-04-20",
     readTime: "6 min read",
     excerpt:
-      "Nobody tells you about the stairs. You read 'perched on a cliff' and you imagine the view.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80"
+      "The Cayo, Tikal, and out to the coast.  Six days in Belize and Central America",
+    featured: true,
+    imageSrc: "/images/san_pedro_hotel.jpg"
   },
   {
     id: 1,
@@ -23,20 +23,8 @@ export const POSTS: Post[] = [
     excerpt:
       "A train ride, a wrong stop, and the best meal I never planned for.",
     type: "image",
-    featured: true,
     imageSrc:
       "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80"
-  },
-  {
-    id: 2,
-    slug: "why-i-deleted-everything",
-    category: "thoughts",
-    title: "Why I Deleted Everything",
-    date: "2026-03-05",
-    readTime: "5 min read",
-    excerpt:
-      "Social media had me performing a version of myself I no longer recognized.",
-    type: "text"
   },
   {
     id: 3,
@@ -66,21 +54,10 @@ export const POSTS: Post[] = [
     category: "cycling",
     title: "Bear Creek Trail — Part 2",
     date: "2026-02-11",
-    readTime: "4 min",
+    readTime: "4 min read",
     excerpt: "A continuation of my February ride down the Bear Creek Trail",
     type: "video",
     videoId: "UtjHy7FkXRU "
-  },
-  {
-    id: 6,
-    slug: "a-note-on-slowness",
-    category: "thoughts",
-    title: "A Note on Slowness",
-    date: "2026-01-15",
-    readTime: "3 min read",
-    excerpt:
-      "Moving fast is a personality trait we've collectively mistaken for a virtue.",
-    type: "text"
   }
 ];
 
