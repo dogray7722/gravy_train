@@ -2,7 +2,7 @@ import type { Post, CategoryFilter, ArchiveYear } from "./types";
 
 export const POSTS: Post[] = [
   {
-    id: 7,
+    id: 4,
     slug: "belize-and-points-west",
     category: "travel",
     title: "Belize And Points West",
@@ -14,17 +14,15 @@ export const POSTS: Post[] = [
     imageSrc: "/images/san_pedro_hotel.jpg"
   },
   {
-    id: 1,
-    slug: "lost-somewhere-between-lisbon-and-porto",
+    id: 5,
+    slug: "tikal",
     category: "travel",
-    title: "Lost Somewhere Between Lisbon and Porto",
-    date: "2026-03-18",
-    readTime: "7 min read",
+    title: "Tikal",
+    date: "2026-04-21",
+    readTime: "9 min read",
     excerpt:
-      "A train ride, a wrong stop, and the best meal I never planned for.",
-    type: "image",
-    imageSrc:
-      "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80"
+      "A journey into the Guatemalan countryside and the mysterious Maya megalopolis of Tikal",
+    imageSrc: "/images/temple_of_the_jaguar.jpg"
   },
   {
     id: 3,
@@ -38,7 +36,7 @@ export const POSTS: Post[] = [
     videoId: "B3KZwqWr8Ks "
   },
   {
-    id: 4,
+    id: 1,
     slug: "bear-creek-trail",
     category: "cycling",
     title: "Traversing the Bear Creek Trail",
@@ -49,7 +47,7 @@ export const POSTS: Post[] = [
     videoId: "Y50pwVVMbLk "
   },
   {
-    id: 5,
+    id: 2,
     slug: "bear-creek-part-two",
     category: "cycling",
     title: "Bear Creek Trail — Part 2",
