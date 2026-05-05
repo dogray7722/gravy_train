@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Total sticky header height (top row 4.375rem + nav row 2.75rem) */
+  /* Total sticky header height (top row 4.375rem + desktop nav row 2.75rem) */
   --header-height: 7.125rem;
 
   /* RGBA overlay / surface tokens — dark defaults */
@@ -37,6 +37,13 @@
   --ink-landing-gradient:
     radial-gradient(ellipse 80% 50% at 20% 80%, rgba(180,140,90,0.14) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 80% 20%, rgba(200,160,100,0.10) 0%, transparent 50%);
+}
+
+/* Mobile header: top row (4.375rem) + mobile nav strip (2.5rem) */
+@media (max-width: 639px) {
+  :root {
+    --header-height: 6.875rem;
+  }
 }
 
 /* inline: var-reference theme values (avoids var indirection) */

@@ -10,7 +10,7 @@ export default function BlogHero({ post }: { post: Post }) {
         Featured
       </p>
 
-      <div className="border border-(--ink-border-mid) p-10 bg-(--ink-surface-hero) animate-[fadeUp_0.6s_ease_both]">
+      <div className="border border-(--ink-border-mid) p-4 sm:p-10 bg-(--ink-surface-hero) animate-[fadeUp_0.6s_ease_both]">
         {post.imageSrc && (
           <img
             src={post.imageSrc}
@@ -33,12 +33,12 @@ export default function BlogHero({ post }: { post: Post }) {
           {post.excerpt}
         </p>
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
           <Link
             href={`/blog/${post.slug}`}
             className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
           >
-            Continue reading →
+            Continue reading <span className="hidden sm:inline">→</span>
           </Link>
           <span className="text-[0.75rem] text-ink-muted">
             {formatDate(post.date)} · {post.readTime}
