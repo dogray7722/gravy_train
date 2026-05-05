@@ -2,40 +2,6 @@ import type { Post, CategoryFilter, ArchiveYear } from "./types";
 
 export const POSTS: Post[] = [
   {
-    id: 4,
-    slug: "belize-and-points-west",
-    category: "travel",
-    title: "Belize And Points West",
-    date: "2026-04-20",
-    readTime: "6 min read",
-    excerpt:
-      "The Cayo, Tikal, and out to the coast.  Six days in Belize and Central America",
-    featured: true,
-    imageSrc: "/images/san_pedro_hotel.jpg"
-  },
-  {
-    id: 5,
-    slug: "tikal",
-    category: "travel",
-    title: "Tikal",
-    date: "2026-04-21",
-    readTime: "9 min read",
-    excerpt:
-      "A journey into the Guatemalan countryside and the mysterious Maya megalopolis of Tikal",
-    imageSrc: "/images/temple_of_the_jaguar.jpg"
-  },
-  {
-    id: 3,
-    slug: "lee-gulch-ride",
-    category: "cycling",
-    title: "Riding Lee Gulch",
-    date: "2026-03-29",
-    readTime: "4 min read",
-    excerpt: "A spring ride on the South Suburban Trail system",
-    type: "video",
-    videoId: "B3KZwqWr8Ks "
-  },
-  {
     id: 1,
     slug: "bear-creek-trail",
     category: "cycling",
@@ -56,6 +22,50 @@ export const POSTS: Post[] = [
     excerpt: "A continuation of my February ride down the Bear Creek Trail",
     type: "video",
     videoId: "UtjHy7FkXRU "
+  },
+  {
+    id: 3,
+    slug: "lee-gulch-ride",
+    category: "cycling",
+    title: "Riding Lee Gulch",
+    date: "2026-03-29",
+    readTime: "4 min read",
+    excerpt: "A spring ride on the South Suburban Trail system",
+    type: "video",
+    videoId: "B3KZwqWr8Ks "
+  },
+  {
+    id: 4,
+    slug: "belize-and-points-west",
+    category: "travel",
+    title: "Belize And Points West",
+    date: "2026-04-20",
+    readTime: "6 min read",
+    excerpt:
+      "The Cayo, Tikal, and out to the coast.  Six days in Central America",
+    featured: true,
+    imageSrc: "/images/san_pedro_hotel.jpg"
+  },
+  {
+    id: 5,
+    slug: "tikal",
+    category: "travel",
+    title: "Tikal",
+    date: "2026-04-21",
+    readTime: "9 min read",
+    excerpt:
+      "A journey into the Guatemalan countryside and a mysterious Maya megalopolis",
+    imageSrc: "/images/temple_of_the_jaguar.jpg"
+  },
+  {
+    id: 6,
+    slug: "san_pedro",
+    category: "travel",
+    title: "San Pedro",
+    date: "2026-04-22",
+    readTime: "10 min read",
+    excerpt: "Spending time in the waters of Amergris Caye",
+    imageSrc: "/images/san_pedro.jpg"
   }
 ];
 
