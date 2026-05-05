@@ -10,7 +10,7 @@ interface Props {
 
 export default function PostDetail({ post, content }: Props) {
   return (
-    <main id="main-content" className="max-w-[65ch] mx-auto px-6 py-16">
+    <main id="main-content" className="max-w-[65ch] mx-auto px-6 pt-16 pb-32 sm:pb-24">
       {/* Back link + theme toggle */}
       <div className="flex items-center justify-between">
         <Link

@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/posts";
 
 export default function BlogPostCard({ post }: { post: Post }) {
   return (
-    <article className="bg-ink-bg p-7 hover:bg-ink-surface transition-colors h-full group">
+    <article className="bg-ink-bg p-4 sm:p-7 hover:bg-ink-surface transition-colors h-full group">
       {post.imageSrc && (
         <img
           src={post.imageSrc}

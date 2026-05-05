@@ -22,26 +22,20 @@ export default function BlogHeader({
   onArchiveChange
 }: Props) {
   return (
-    <header className="bg-(--ink-overlay-header) backdrop-blur-md border-b border-(--ink-border-strong) px-8 sm:px-12 sticky top-0 z-50">
+    <header className="bg-(--ink-overlay-header) backdrop-blur-md border-b border-(--ink-border-strong) px-4 sm:px-8 lg:px-12 sticky top-0 z-50">
       {/* Top row */}
       <div className="flex items-center justify-between h-17.5 border-b border-(--ink-border-subtle)">
         <Link
           href="/"
-          className="[font-family:var(--font-playfair)] text-[1.8rem] font-bold text-ink-text no-underline"
+          className="[font-family:var(--font-playfair)] text-[1.4rem] sm:text-[1.8rem] font-bold text-ink-text no-underline whitespace-nowrap shrink-0"
         >
           The <em className="text-ink-gold not-italic">Gravy Train</em>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 sm:gap-6">
           <span className="hidden sm:inline text-[0.75rem] tracking-[0.14em] uppercase text-ink-warm italic">
             David Gray · Est. 1977
           </span>
-          <Link
-            href="/#subscribe"
-            className="px-5 py-2 border border-(--ink-border-subscribe) bg-(--ink-surface-subscribe) text-ink-warm text-[0.75rem] italic tracking-[0.12em] uppercase transition-colors hover:bg-(--ink-surface-subscribe-hover) hover:border-ink-warm hover:text-ink-text"
-          >
-            <span aria-hidden="true">✦</span> Subscribe
-          </Link>
           <ThemeToggle />
           <button
             onClick={onToggleSidebar}
@@ -57,7 +51,7 @@ export default function BlogHeader({
         </div>
       </div>
 
-      {/* Nav row — hidden on mobile */}
+      {/* Desktop nav row */}
       <nav className="hidden sm:flex gap-8 h-11 items-center">
         <Link
           href="/blog"
@@ -78,6 +72,36 @@ export default function BlogHeader({
           className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
         >
           About
+        </Link>
+
+        <Link
+          href="/#subscribe"
+          className="ml-auto px-4 py-1 border border-(--ink-border-subscribe) bg-(--ink-surface-subscribe) text-ink-warm text-[0.75rem] italic tracking-[0.12em] uppercase transition-colors hover:bg-(--ink-surface-subscribe-hover) hover:border-ink-warm hover:text-ink-text"
+        >
+          <span aria-hidden="true">✦</span> Subscribe
+        </Link>
+      </nav>
+
+      {/* Mobile nav row */}
+      <nav className="flex sm:hidden gap-6 h-10 items-center">
+        <Link
+          href="/blog"
+          onClick={() => onArchiveChange(null)}
+          className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
+        >
+          Blog
+        </Link>
+        <Link
+          href="/about"
+          className="text-[0.75rem] tracking-[0.16em] uppercase text-ink-warm hover:text-ink-text transition-colors"
+        >
+          About
+        </Link>
+        <Link
+          href="/#subscribe"
+          className="ml-auto px-3 py-1 border border-(--ink-border-subscribe) bg-(--ink-surface-subscribe) text-ink-warm text-[0.75rem] italic tracking-[0.12em] uppercase transition-colors hover:bg-(--ink-surface-subscribe-hover) hover:border-ink-warm hover:text-ink-text"
+        >
+          Subscribe
         </Link>
       </nav>
     </header>
