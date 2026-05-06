@@ -49,8 +49,9 @@ export async function POST(req: NextRequest) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const unsubscribeUrl = `${siteUrl}/api/unsubscribe?token=${token}`;
 
+  let emailError: string | null = null;
   try {
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev",
       to: normalized,
       subject: "You're on the Gravy Train",
@@ -71,9 +72,14 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
-  } catch {
-    // Subscriber is stored; welcome email failure is non-fatal
+    if (result.error) {
+      emailError = result.error.message;
+      console.error("[subscribe] Resend error:", result.error);
+    }
+  } catch (err) {
+    emailError = err instanceof Error ? err.message : "Unknown email error";
+    console.error("[subscribe] Resend threw:", emailError);
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, emailSent: !emailError, emailError });
 }

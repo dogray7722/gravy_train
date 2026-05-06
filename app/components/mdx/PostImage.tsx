@@ -3,11 +3,15 @@ interface PostImageProps {
   alt?: string;
   caption?: string;
   wide?: boolean;
+  maxWidth?: string;
 }
 
-export default function PostImage({ src, alt, caption, wide }: PostImageProps) {
+export default function PostImage({ src, alt, caption, wide, maxWidth }: PostImageProps) {
   return (
-    <figure className={wide ? "-mx-6 my-10" : "my-10"}>
+    <figure
+      className={`${wide ? "-mx-6 my-10" : "my-10"}${maxWidth ? " mx-auto" : ""}`}
+      style={maxWidth ? { maxWidth } : undefined}
+    >
       <img
         src={src}
         alt={alt ?? ""}

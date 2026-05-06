@@ -66,6 +66,26 @@ export const POSTS: Post[] = [
     readTime: "10 min read",
     excerpt: "Spending time in the waters of Amergris Caye",
     imageSrc: "/images/san_pedro.jpg"
+  },
+  {
+    id: 7,
+    slug: "guanajuato",
+    category: "travel",
+    title: "Guanajuato, México",
+    date: "2025-11-30",
+    readTime: "10 min read",
+    excerpt: "Walking the winding alleys of Guanjuato and its surrounds",
+    imageSrc: "/images/teatro_juarez.jpg"
+  },
+  {
+    id: 8,
+    slug: "guanajuato_continued",
+    category: "travel",
+    title: "Guanajuato Part 2",
+    date: "2025-12-01",
+    readTime: "9 min read",
+    excerpt: "Exploring the area around Guanjuato",
+    imageSrc: "/images/san_miguel_cathedral.jpg"
   }
 ];
 
