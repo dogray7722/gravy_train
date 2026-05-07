@@ -12,6 +12,8 @@ interface Props {
   archiveYears: ArchiveYear[];
   activeArchive: ActiveArchive | null;
   onArchiveChange: (archive: ActiveArchive | null) => void;
+  hideSidebar?: boolean;
+  hideArchive?: boolean;
 }
 
 export default function BlogHeader({
@@ -19,7 +21,9 @@ export default function BlogHeader({
   onToggleSidebar,
   archiveYears,
   activeArchive,
-  onArchiveChange
+  onArchiveChange,
+  hideSidebar = false,
+  hideArchive = false,
 }: Props) {
   return (
     <header className="bg-(--ink-overlay-header) backdrop-blur-md border-b border-(--ink-border-strong) px-4 sm:px-8 lg:px-12 sticky top-0 z-50">
@@ -37,17 +41,19 @@ export default function BlogHeader({
             David Gray · Est. 1977
           </span>
           <ThemeToggle />
-          <button
-            onClick={onToggleSidebar}
-            className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
-            aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
-          >
-            {sidebarOpen ? (
-              <PanelLeftClose size={20} />
-            ) : (
-              <PanelLeft size={20} />
-            )}
-          </button>
+          {!hideSidebar && (
+            <button
+              onClick={onToggleSidebar}
+              className="w-11 h-11 flex items-center justify-center text-ink-warm hover:text-ink-text transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink-dark"
+              aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+            >
+              {sidebarOpen ? (
+                <PanelLeftClose size={20} />
+              ) : (
+                <PanelLeft size={20} />
+              )}
+            </button>
+          )}
         </div>
       </div>
 
@@ -61,11 +67,13 @@ export default function BlogHeader({
           Blog
         </Link>
 
-        <ArchiveDropdown
-          archiveYears={archiveYears}
-          activeArchive={activeArchive}
-          onArchiveChange={onArchiveChange}
-        />
+        {!hideArchive && (
+          <ArchiveDropdown
+            archiveYears={archiveYears}
+            activeArchive={activeArchive}
+            onArchiveChange={onArchiveChange}
+          />
+        )}
 
         <Link
           href="/about"

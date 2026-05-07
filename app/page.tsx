@@ -45,14 +45,17 @@ export default function LandingInk() {
       <div className="w-20 h-px bg-linear-to-r from-transparent via-ink-gold-dim to-transparent my-7 mx-auto" />
 
       <p className="text-base italic text-ink-warm text-center max-w-100 leading-[1.8] m-0 animate-[fadeUp_1s_ease_0.2s_both]">
-        Taking back my life history from the cess pool that is social media.
+        Taking back my digital life from the cess pool that is social media.
         What I create here is from my own mind and my own experience. Everything
-        I build here, I own.
+        I build here, is mine, and mine alone.
       </p>
 
       <div className="w-20 h-px bg-linear-to-r from-transparent via-ink-gold-dim to-transparent my-7 mx-auto" />
 
-      <div id="subscribe" className="flex flex-col items-center gap-5 w-full max-w-95 animate-[fadeUp_1s_ease_0.35s_both]">
+      <div
+        id="subscribe"
+        className="flex flex-col items-center gap-5 w-full max-w-95 animate-[fadeUp_1s_ease_0.35s_both]"
+      >
         {status === "success" || status === "duplicate" ? (
           <p className="italic text-ink-warm text-[0.9rem] text-center">
             <span aria-hidden="true">✦</span>{" "}
@@ -71,7 +74,7 @@ export default function LandingInk() {
                 const res = await fetch("/api/subscribe", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ email }),
+                  body: JSON.stringify({ email })
                 });
                 const data = await res.json();
                 if (!res.ok) {
@@ -111,7 +114,9 @@ export default function LandingInk() {
               </button>
             </div>
             {status === "error" && (
-              <p className="text-red-400 text-[0.8rem] text-center">{errorMsg}</p>
+              <p className="text-red-400 text-[0.8rem] text-center">
+                {errorMsg}
+              </p>
             )}
           </form>
         )}
