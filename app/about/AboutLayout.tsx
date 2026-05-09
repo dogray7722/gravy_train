@@ -67,10 +67,10 @@ export default function AboutLayout() {
             internet have we all just accepted a few major players as vessels
             for our thoughts, our creations, and our memories? For this project
             I wanted to minimize as much as possible any external ownership, so
-            instead of just creating an account on Medium or Substack or even
-            using a platform like WordPress, I decided to roll my own. After
-            all, the very first blogs were just straight HTML, and I want to
-            bring back that spirit of democratization, of ownership.
+            instead of just creating content on Medium or Substack or even using
+            a platform like WordPress, I decided to roll my own. After all, the
+            very first blogs were just straight HTML, and I want to bring back
+            that spirit of democratization, of ownership.
           </p>
           <p>
             In the short time that this site has been live, I have found a new
