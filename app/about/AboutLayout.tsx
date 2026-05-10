@@ -38,7 +38,7 @@ export default function AboutLayout() {
 
         <div className="h-px bg-linear-to-r from-(--ink-decor-line-strong) via-(--ink-decor-line) to-transparent mb-10" />
 
-        {/* Lorem ipsum body copy */}
+        {/* body copy */}
         <div className="space-y-6 text-ink-warm leading-[1.85] text-base italic">
           <p>
             When we pay attention to the loudest rather than the most
