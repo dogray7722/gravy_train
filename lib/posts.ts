@@ -86,6 +86,18 @@ export const POSTS: Post[] = [
     readTime: "9 min read",
     excerpt: "Exploring the area around Guanjuato",
     imageSrc: "/images/san_miguel_cathedral.jpg"
+  },
+  {
+    id: 9,
+    slug: "east-west-trail",
+    category: "cycling",
+    title: "East West Regional Trail",
+    date: "2026-06-10",
+    readTime: "2 min read",
+    excerpt:
+      "Wilderness ride on the East / West Regional Trail in Douglas County, Colorado",
+    type: "video",
+    videoId: "oTxgMteDtxk "
   }
 ];
 
