@@ -30,7 +30,7 @@ export const POSTS: Post[] = [
     title: "Riding Lee Gulch",
     date: "2026-03-29",
     readTime: "4 min read",
-    excerpt: "A spring ride on the South Suburban Trail system",
+    excerpt: "A spring ride on the South Suburban trail system",
     type: "video",
     videoId: "B3KZwqWr8Ks "
   },
@@ -42,7 +42,7 @@ export const POSTS: Post[] = [
     date: "2026-04-20",
     readTime: "6 min read",
     excerpt:
-      "The Cayo, Tikal, and out to the coast.  Six days in Central America",
+      "The Cayo, Tikal, and out to the coast.  Six days in Central America.",
     featured: true,
     imageSrc: "/images/san_pedro_hotel.jpg"
   },
@@ -64,7 +64,7 @@ export const POSTS: Post[] = [
     title: "San Pedro",
     date: "2026-04-22",
     readTime: "10 min read",
-    excerpt: "Spending time in the waters of Amergris Caye",
+    excerpt: "Spending time in the waters of Ambergris Caye",
     imageSrc: "/images/san_pedro.jpg"
   },
   {
@@ -92,7 +92,7 @@ export const POSTS: Post[] = [
     slug: "east-west-trail",
     category: "cycling",
     title: "East West Regional Trail",
-    date: "2026-06-10",
+    date: "2026-05-10",
     readTime: "2 min read",
     excerpt:
       "Wilderness ride on the East / West Regional Trail in Douglas County, Colorado",
