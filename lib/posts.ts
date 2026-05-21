@@ -98,6 +98,16 @@ export const POSTS: Post[] = [
       "Wilderness ride on the East / West Regional Trail in Douglas County, Colorado",
     type: "video",
     videoId: "oTxgMteDtxk "
+  },
+  {
+    id: 10,
+    slug: "boston",
+    category: "travel",
+    title: "Boston",
+    date: "2025-07-07",
+    readTime: "8 min read",
+    excerpt: "Spending time in Boston on and around the 4th of July",
+    imageSrc: "/images/paul_revere_old_south_main.jpg"
   }
 ];
 
