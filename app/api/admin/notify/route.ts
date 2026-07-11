@@ -52,9 +52,14 @@ export async function POST(req: NextRequest) {
       const messages = chunk.map((sub) => {
         const unsubUrl = `${siteUrl}/api/unsubscribe?token=${sub.unsubscribeToken}`;
         return {
-          from: fromEmail,
+          from: `The Gravy Train <${fromEmail}>`,
           to: sub.email,
           subject: `New post: ${post.title}`,
+          headers: {
+            "List-Unsubscribe": `<${unsubUrl}>`,
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+          },
+          text: `${post.title}\n\n${post.excerpt}\n\nRead now: ${postUrl}\n\n---\nYou're receiving this because you subscribed to the Gravy Train.\nUnsubscribe: ${unsubUrl}`,
           html: `
             <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#2c2620;padding:2rem">
               <h2 style="font-family:Georgia,serif;font-size:1.4rem;font-weight:700;margin-bottom:0.5rem">
