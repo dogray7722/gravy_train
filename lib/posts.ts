@@ -43,7 +43,6 @@ export const POSTS: Post[] = [
     readTime: "6 min read",
     excerpt:
       "The Cayo, Tikal, and out to the coast.  Six days in Central America.",
-    featured: true,
     imageSrc: "/images/san_pedro_hotel.jpg"
   },
   {
@@ -108,6 +107,27 @@ export const POSTS: Post[] = [
     readTime: "8 min read",
     excerpt: "Spending time in Boston on and around the 4th of July",
     imageSrc: "/images/paul_revere_old_south_main.jpg"
+  },
+  {
+    id: 11,
+    slug: "oregon",
+    category: "travel",
+    title: "Oregon",
+    date: "2026-07-08",
+    readTime: "10 min read",
+    excerpt: "Portland and down the Oregon coast on the 101",
+    featured: true,
+    imageSrc: "/images/yaquina_lighthouse.jpg"
+  },
+  {
+    id: 12,
+    slug: "oregon_continued",
+    category: "travel",
+    title: "Oregon Part 2",
+    date: "2026-07-08",
+    readTime: "8 min read",
+    excerpt: "Ashland, Crater Lake, Bend, and the Columbia River Gorge",
+    imageSrc: "/images/crater_lake_1.jpg"
   }
 ];
 

@@ -4,6 +4,7 @@ import YouTubeEmbed from "@/app/components/mdx/YouTubeEmbed";
 import ImageGallery from "@/app/components/mdx/ImageGallery";
 import PostLink from "@/app/components/mdx/PostLink";
 import PostVideo from "@/app/components/mdx/PostVideo";
+import InlineLink from "@/app/components/mdx/InlineLink";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -47,6 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ImageGallery,
     PostLink,
     PostVideo,
+    InlineLink,
     ...components,
   };
 }
