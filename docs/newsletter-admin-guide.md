@@ -101,6 +101,10 @@ The `/admin` dashboard shows every subscriber with their email, subscribe date, 
 
 In the subscriber table, click **Remove** next to any active subscriber. This soft-deletes them (marks as inactive) — their record is kept for historical counts but they won't receive future emails.
 
+### Permanently delete unsubscribed records
+
+Click **Purge Unsubscribed (N)** above the subscriber table to permanently delete every inactive (unsubscribed) record from the database in one click. A confirmation dialog shows the count and warns this cannot be undone — export a CSV backup first if you want a copy. This is the UI equivalent of running `DELETE FROM subscribers WHERE active = 0;` via the Turso CLI (see below).
+
 ### Export the full list as CSV
 
 Click **Export CSV** in the admin dashboard. This downloads a file named `subscribers-YYYY-MM-DD.csv` with columns:
