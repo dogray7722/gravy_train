@@ -10,7 +10,7 @@ export const POSTS: Post[] = [
     readTime: "4 min read",
     excerpt: "A way too early trek on a path in the Denver suburbs",
     type: "video",
-    videoId: "Y50pwVVMbLk "
+    videoId: "Y50pwVVMbLk"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const POSTS: Post[] = [
     readTime: "4 min read",
     excerpt: "A continuation of my February ride down the Bear Creek Trail",
     type: "video",
-    videoId: "UtjHy7FkXRU "
+    videoId: "UtjHy7FkXRU"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ export const POSTS: Post[] = [
     readTime: "4 min read",
     excerpt: "A spring ride on the South Suburban trail system",
     type: "video",
-    videoId: "B3KZwqWr8Ks "
+    videoId: "B3KZwqWr8Ks"
   },
   {
     id: 4,
@@ -96,7 +96,7 @@ export const POSTS: Post[] = [
     excerpt:
       "Wilderness ride on the East / West Regional Trail in Douglas County, Colorado",
     type: "video",
-    videoId: "oTxgMteDtxk "
+    videoId: "oTxgMteDtxk"
   },
   {
     id: 10,
@@ -128,6 +128,17 @@ export const POSTS: Post[] = [
     readTime: "8 min read",
     excerpt: "Ashland, Crater Lake, Bend, and the Columbia River Gorge",
     imageSrc: "/images/crater_lake_1.jpg"
+  },
+  {
+    id: 13,
+    slug: "chatfield-to-waterton",
+    category: "cycling",
+    title: "Chatfield to Waterton Canyon",
+    date: "2026-10-18",
+    readTime: "2 min read",
+    excerpt: "Riding the High Line Canal ",
+    type: "video",
+    videoId: "1nKOiHqOZps"
   }
 ];
 
